@@ -48,7 +48,7 @@ export async function deleteServices({ id }){
 
         const services = await deleteServiceModels({ id, schema: 'localflow' });
 
-        return buildResponse(200, services, 'delete')
+        return services;
 
         
     }catch(e) { 
