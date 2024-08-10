@@ -51,19 +51,55 @@ export async function postServices({ data, schema}) {
 
 }
 
-export async function putServices() { 
-    // try{
+export async function putServices({ id, data, schema }) { 
+    try{
 
-    // }catch(error) { 
+        const database = new DatabaseOperations(tableName, schema);
+        const update = validateData( data , model, 'put');
 
-    // }
+        if( Object.keys( update).length === 0 ) { 
+            return buildResponse(400, {message : 'Missing required fields or not valid'}, 'put');
+        }
+
+        if(!id){
+            return buildResponse(400, {message : 'Missing required fields or not valid'}, 'put');
+        }
+
+        const where = {
+            [idField] : id
+        }
+
+
+
+        const response = await database.update( update, where);
+        return buildResponse(200, response, 'put');
+    }catch(error) { 
+        colorLog(` PUT SERVICES ERROR:  ${JSON.stringify(error)}`, "red", "reset");
+        return buildResponse(500, error, "put");
+
+    }
 }
 
 
-export async function deleteServices() { 
-    // try{
-        
-    // }catch(error) { 
+export async function deleteServices({ id, schema}) {
 
-    // }
+    try{
+        const database = new DatabaseOperations(tableName, schema);
+
+        if( !id ) 
+            return buildResponse(400, { message : 'Missing the record id to delete'});
+        
+        
+        await database.delete(id, idField);
+
+        return buildResponse(200, { message : 'Record deleted successfully'}, 'delete');
+
+
+
+        
+    }catch(error) { 
+
+        colorLog(` DELETE SERVICES ERROR:  ${JSON.stringify(error)}`, "red", "reset");
+        return buildResponse(500, error, "delete");
+    }
 }

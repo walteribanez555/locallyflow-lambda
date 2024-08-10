@@ -30,29 +30,29 @@ export async function postServices({ data }){
 
 
 export async function putServices({ data }){
-    // try{
+    try{
 
-    //     const services = await putServicesModels({ data, schema: 'localflow' });
+        const services = await putServicesModels({ data, schema: 'localflow' });
 
-    //     return buildResponse(200, services, 'put')
+        return services;
 
-    // }catch(e) { 
-    //     return buildResponse(500, {message : e}, 'put')
-    // }
+    }catch(e) { 
+        return buildResponse(500, {message : e}, 'put')
+    }``
 
 }
 
 export async function deleteServices({ id }){
 
-    // try{
+    try{
 
-    //     const services = await deleteServiceModels({ id, schema: 'localflow' });
+        const services = await deleteServiceModels({ id, schema: 'localflow' });
 
-    //     return buildResponse(200, services, 'delete')
+        return buildResponse(200, services, 'delete')
 
         
-    // }catch(e) { 
-    //     return buildResponse(500, {message : e}, 'delete')
-    // }
+    }catch(e) { 
+        return buildResponse(500, {message : e}, 'delete')
+    }
 
 }   
