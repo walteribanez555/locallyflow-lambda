@@ -10,7 +10,7 @@ const keyField = "token";
 
 
 const model = {
-    "service_id" : "number",
+    // "service_id" : "number",
     "token" : "string",
     "owner" : "string",
     "status" : "number",
