@@ -20,7 +20,7 @@ export async function postServices({ data }){
     try{
         const services = await postServicesModels({ data, schema: 'localflow' });
 
-        return buildResponse(200, services, 'post')
+        return services
 
     }catch(e) { 
         return buildResponse(500, {message : e}, 'post')
