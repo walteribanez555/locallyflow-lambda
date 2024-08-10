@@ -29,10 +29,10 @@ export async function postServices({ data }){
 }
 
 
-export async function putServices({ data }){
+export async function putServices({ id, data }){
     try{
 
-        const services = await putServicesModels({ data, schema: 'localflow' });
+        const services = await putServicesModels({ id , data, schema: 'localflow' });
 
         return services;
 
