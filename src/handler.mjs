@@ -1,6 +1,7 @@
 // import { getCoberturas } from "./controllers/coberturas.controller.mjs";
 
 import { ping } from "./utils/ping.mjs";
+import { getServices } from "./controllers/services.controller.mjs";
 import { buildResponse, parseJsonToObject } from './utils/helpers.mjs';
 
 
@@ -20,10 +21,10 @@ export const handler = async (event) => {
 
     const endpoints = {
         '/' : ping,
-        // '/coberturas' : {
-        //     'get': getCoberturas,
-        // },
-        
+        '/services' : {
+            'get': getServices,
+        },
+       
         'others' : buildResponse,
 
     }
